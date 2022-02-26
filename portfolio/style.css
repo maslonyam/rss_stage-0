@@ -931,6 +931,10 @@ html {
     width: 100%;
   }
 
+  .portfolio-item {
+    height: 100%;
+  }
+
   .video-player__control-panel {
     height: 30px;
   }
