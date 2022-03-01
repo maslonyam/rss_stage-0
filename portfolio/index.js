@@ -13,6 +13,10 @@ const fullScreenButton = document.querySelector(".control-panel__fullscreen")
 const video = document.querySelector("video");
 const videoPlayer = document.querySelector(".video-player");
 const controlPanel = document.querySelector(".video-player__control-panel");
+const volumeButton = document.querySelector(".control-button__volume-button");
+const volumeRange = document.querySelector(`[name="volume"]`);
+
+video.volume = 0.5;
 
 function openMenu(button, menu) {
   button.addEventListener("change", function() {
@@ -136,6 +140,46 @@ function getFullScreen() {
   });
 }
 
+function updateVolume() {
+  volumeRange.addEventListener("input", () => {
+    let volumeValue = volumeRange.value;
+    volumeRange.style.setProperty("--volume-value", `${volumeValue * 100}%`);
+    video.volume = volumeValue;
+    if (video.volume === 0) {
+      muteVolume();
+    } else {
+      unmuteVolume();
+    }
+  });
+}
+
+function triggerVolumeButton() {
+  volumeButton.addEventListener("click", () => {
+    let volume = video.volume;
+    if (volume === 0) {
+      video.volume = 0.5;
+      volume = 50;
+      volumeRange.style.setProperty("--volume-value", `${volume}%`);
+      volumeRange.value = 0.5;
+      unmuteVolume();
+    } else {
+      volume = 0;
+      video.volume = 0;
+      volumeRange.style.setProperty("--volume-value", `${volume}%`);
+      volumeRange.value = 0;
+      muteVolume();
+    }
+  });
+}
+
+function muteVolume() {
+  volumeButton.classList.add("mute");
+}
+
+function unmuteVolume() {
+  volumeButton.classList.remove("mute");
+}
+
 openMenu(menuButton, menuNav);
 closeMenu(navigation, menuNav, menuButton);
 changePortfolioImages(portfolioButton, portfolioImages)
@@ -144,3 +188,5 @@ themeSwitcher();
 preloadImages();
 showHideControl();
 getFullScreen();
+updateVolume();
+triggerVolumeButton();
