@@ -7,6 +7,12 @@ const navigation = document.querySelector(".navigation-list");
 const portfolioButton = document.querySelector(".portfolio-toggle");
 const portfolioImages = document.querySelectorAll(".portfolio-item__image");
 const langToggle = document.querySelectorAll(".lang-toggle__switch");
+const videoPlayButton = document.querySelector(".video-player__button");
+const videoPlayControl = document.querySelector(".control-panel__play");
+const fullScreenButton = document.querySelector(".control-panel__fullscreen")
+const video = document.querySelector("video");
+const videoPlayer = document.querySelector(".video-player");
+const controlPanel = document.querySelector(".video-player__control-panel");
 
 function openMenu(button, menu) {
   button.addEventListener("change", function() {
@@ -80,9 +86,61 @@ function preloadImages() {
   });
 }
 
+videoPlayButton.addEventListener("click", isVideoPaused);
+videoPlayControl.addEventListener("click", isVideoPaused);
+video.addEventListener("click", isVideoPaused);
+
+function isVideoPaused() {
+  let isPaused = video.paused;
+  console.log(isPaused)
+  isPaused ? playVideo() : pauseVideo();
+}
+
+function playVideo() {
+  video.play();
+  videoPlayControl.style.backgroundImage = "url('./assets/svg/video-player__pause-button.svg')";
+  videoPlayButton.style.display = "none";
+}
+
+function pauseVideo() {
+  video.pause();
+  videoPlayControl.style.backgroundImage = "url('./assets/svg/video-player__play-button.svg')";
+  videoPlayButton.style.display = "block";
+}
+
+function showHideControl() {
+  video.addEventListener("mouseover", showControl);
+  videoPlayButton.addEventListener("mouseover", showControl);
+  controlPanel.addEventListener("mouseover", showControl);
+
+  video.addEventListener("mouseleave", hideControl);
+  videoPlayButton.addEventListener("mouseleave", hideControl);
+  controlPanel.addEventListener("mouseleave", hideControl);
+}
+
+function showControl() {
+  controlPanel.style.transform = "translateY(0px)";
+}
+
+function hideControl() {
+  controlPanel.style.transform = "translateY(50px)";
+}
+
+function getFullScreen() {
+  fullScreenButton.addEventListener("click", () => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+  } else {
+      videoPlayer.requestFullscreen();
+  } 
+  });
+}
+
 openMenu(menuButton, menuNav);
 closeMenu(navigation, menuNav, menuButton);
 changePortfolioImages(portfolioButton, portfolioImages)
 getTranslate(langToggle);
 themeSwitcher();
 preloadImages();
+showHideControl();
+getFullScreen();
