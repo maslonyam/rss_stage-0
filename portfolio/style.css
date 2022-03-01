@@ -1,3 +1,6 @@
+/* stylelint-disable prettier/prettier */
+/* stylelint-disable color-function-notation */
+/* stylelint-disable alpha-value-notation */
 /* stylelint-disable selector-class-pattern */
 :root {
   --color-gold: #bdae82;
@@ -521,8 +524,7 @@ html {
 }
 
 .control-panel__volume-range::-webkit-slider-runnable-track {
-  background: linear-gradient(to right, var(--color-gold), var(--color-gold))
-  rgba(255, 255, 255, 0.2);
+  background: linear-gradient(to right, var(--color-gold), var(--color-gold)) rgba(255, 255, 255, 0.2);
   background-repeat: no-repeat;
   background-size: var(--volume-value) 100%;
   border-radius: 10px;
@@ -547,10 +549,27 @@ html {
 }
 
 .progress-bar__fill {
+  position: relative;
   width: 0%;
   height: 100%;
   background-color: var(--color-gold);
   border-radius: 10px;
+}
+
+.fill__thumb {
+  position: absolute;
+  right: 0;
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-white);
+  border-radius: 10px;
+  transform: scale(1.2);
+}
+
+.control-panel__progress-bar:hover .fill__thumb {
+  background-color: var(--color-gold);
+  transform: scale(1.5);
 }
 
 .price-list {

@@ -15,6 +15,8 @@ const videoPlayer = document.querySelector(".video-player");
 const controlPanel = document.querySelector(".video-player__control-panel");
 const volumeButton = document.querySelector(".control-button__volume-button");
 const volumeRange = document.querySelector(`[name="volume"]`);
+const progress = document.querySelector(".progress-bar__fill")
+const progressBar = document.querySelector(".control-panel__progress-bar");
 
 video.volume = 0.5;
 
@@ -96,7 +98,6 @@ video.addEventListener("click", isVideoPaused);
 
 function isVideoPaused() {
   let isPaused = video.paused;
-  console.log(isPaused)
   isPaused ? playVideo() : pauseVideo();
 }
 
@@ -180,6 +181,22 @@ function unmuteVolume() {
   volumeButton.classList.remove("mute");
 }
 
+function updateProgressBar() {
+  progressBar.addEventListener("click", (event) => {
+    const progressWidth = window.getComputedStyle(progressBar).width;
+    const timeToSkip = event.offsetX / parseInt(progressWidth) * video.duration;
+
+    video.currentTime = timeToSkip;
+  });
+
+  setInterval(() => {
+    progress.style.width = `${Math.round(video.currentTime / video.duration * 100)}%`;
+    if (video.currentTime === video.duration) {
+      pauseVideo();
+    }
+  }, 500)
+}
+
 openMenu(menuButton, menuNav);
 closeMenu(navigation, menuNav, menuButton);
 changePortfolioImages(portfolioButton, portfolioImages)
@@ -190,3 +207,4 @@ showHideControl();
 getFullScreen();
 updateVolume();
 triggerVolumeButton();
+updateProgressBar();
