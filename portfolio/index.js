@@ -4,6 +4,7 @@ import themeSwitcher from "./changeTheme.js";
 const menuNav = document.querySelector(".header__navigation");
 const menuButton = document.querySelector(".header__menu-input");
 const navigation = document.querySelector(".navigation-list");
+const header = document.querySelector(".header");
 const portfolioButton = document.querySelector(".portfolio-toggle");
 const portfolioImages = document.querySelectorAll(".portfolio-item__image");
 const langToggle = document.querySelectorAll(".lang-toggle__switch");
@@ -23,6 +24,7 @@ video.volume = 0.5;
 function openMenu(button, menu) {
   button.addEventListener("change", function() {
     menu.classList.toggle("open");
+    header.classList.toggle("open");
   });
 };
 

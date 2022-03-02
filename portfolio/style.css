@@ -793,6 +793,17 @@ html {
     min-width: 280px;
   }
 
+  .header.open {
+    position: fixed;
+    width: 100%;
+  }
+
+  .header.open + main .container .hero {
+    height: 500px;
+    padding-top: 90px;
+    background-position: center -100px;
+  }
+
   .header__theme-toggle {
     margin-right: 30px;
     margin-left: 0;
@@ -841,6 +852,7 @@ html {
     height: 3px;
     margin-bottom: 10px;
     background-color: var(--color-white);
+    transition: 0.3s;
   }
 
   .header__menu-icon:nth-child(4) {
@@ -875,6 +887,7 @@ html {
   .open {
     right: 0;
     transition: 0.5s;
+    overflow: hidden;
   }
 
   .header__lang-toggle {
@@ -998,6 +1011,10 @@ html {
 }
 
 @media (max-width: 640px) {
+  .header-container {
+    padding: 0 20px;
+  }
+
   .header__navigation {
     width: 100%;
   }
