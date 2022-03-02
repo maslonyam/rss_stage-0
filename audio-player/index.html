@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>audioplayer</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="./assets/svg/favicon.ico" rel="icon">
+</head>
+<body class="body">
+  <div class="preload"></div>
+  <div class="background-wrapper">
+    <figure class="background"></figure>
+  </div>
+  <header class="header">
+    <div class="container">
+    <nav class="header__artists">
+      <ul class="artists-list list">
+        <li class="artists-list__item list-item">
+          <input type="radio" name="artists" id="awfultune" value="awfultune" data-artist="awfultune" class="artist">
+          <label class="artist__name text-elem" for="awfultune">awfultune</label>
+        </li>
+        <li class="artists-list__item list-item">
+          <input type="radio" name="artists" id="twenty_one_pilots" value="twenty_one_pilots" data-artist="twenty_one_pilots" class="artist">
+          <label class="artist__name text-elem" for="twenty_one_pilots">twenty one pilots</label>
+        </li>
+        <li class="artists-list__item list-item">
+          <input type="radio" name="artists" id="milky_chance" value="milky_chance" data-artist="milky_chance" class="artist">
+          <label class="artist__name text-elem" for="milky_chance">Milky Chance</label>
+        </li>
+        <li class="artists-list__item list-item">
+          <input type="radio" name="artists" id="dennis_lloyd" value="dennis_lloyd" data-artist="dennis_lloyd" class="artist">
+          <label class="artist__name text-elem" for="dennis_lloyd">Dennis Lloyd</label>
+        </li>
+        <li class="artists-list__item list-item">
+          <input type="radio" name="artists" id="eden" value="eden" data-artist="eden" class="artist">
+          <label class="artist__name text-elem" for="eden">EDEN</label>
+        </li>
+        <li class="artists-list__item list-item">
+          <input type="radio" name="artists" id="men_i_trust" data-artist="men_i_trust" class="artist">
+          <label class="artist__name text-elem" for="men_i_trust">Men I Trust</label>
+        </li>
+      </ul>
+      <div class="navigation__menu">
+        <input class="navigation__menu-input" type="checkbox">
+        <span class="menu-icon"></span>
+        <span class="menu-icon"></span>
+        <span class="menu-icon"></span>
+      </div>
+    </nav>
+  </div>
+  </header>
+  <main class="main">
+  <div class="container">
+    <section class="player">
+      <article class="player__current-track article_black-back">
+        <img class="current-track__album-cover" src="./assets/img/awfultune/album_1.jpg" alt="Album cover" data-album="album_1" width="350" height="350">
+        <div class="current-track_wrapper">
+        <div class="current-track__info">
+          <h2 class="current-track__header text-elem track-name" data-header="track_1">redesign</h2>
+          <h3 class="current-track__album-header text-elem album-name" data-album="album_1">redesign</h3>
+        </div>
+        <div class="current-track__control">
+          <div class="control__buttons-wrapper">
+          <button class="control__button-play player-button play-button" data-current="true" data-artist="awfultune" data-album="album_1" data-track="track_1"></button>
+          <button class="control__button-prev player-button"></button>
+          <button class="control__button-next player-button"></button>
+        </div>
+        <div class="control__time-display">
+          <p class="control__current-time time">0:00</p>
+          <div class="control__timeline">
+            <div class="timeline__progress-bar"></div>
+          </div>
+          <p class="control__time time">2:28</p>
+          <div class="volume-wrapper">
+            <div class="control__volume-wrapper">
+            <button class="control__volume player-button"></button>
+            <div class="volume-bar">
+              <div class="volume-scale"></div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+      </div>
+      </article>
+      <article class="player__discography article_black-back">
+        <h2 class="discography__artist-name artist-name text-elem" data-artist="awfultune">awfultune</h2>
+        <ul class="discography__track-list list">
+          <li class="track-list__track-item list-item" data-artist="awfultune">
+            <button class="track-item__play play-button" data-album="album_1" data-artist="awfultune" data-track="track_1" data-current="true"></button>
+            <div class="track-item__info">
+              <h3 class="track-item__header text-elem track-name">redesign</h3>
+              <h4 class="track-item__album text-elem album-name">redesign</h4>
+            </div>
+            <p class="track-item__time text-elem">2:28</p>
+          </li>
+          <li class="track-list__track-item list-item" data-artist="awfultune">
+            <button class="track-item__play play-button" data-album="album_2" data-artist="awfultune" data-track="track_1" data-current="false"></button>
+            <div class="track-item__info">
+              <h3 class="track-item__header text-elem track-name">I Met Sarah In The Bathroom</h3>
+              <h4 class="track-item__album text-elem album-name">I Met Sarah In The Bathroom</h4>
+            </div>
+            <p class="track-item__time text-elem">2:01</p>
+          </li>
+        </ul>
+      </article>
+    </section>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <a class="footer__author text-elem" href="https://github.com/maslonyam">maslonyam</a>
+      <p class="footer__year text-elem">2022</p>
+      <a class="footer__rss-logo" href="https://rs.school/js-stage0/"></a>
+    </div>
+    </footer>
+    <script async type="module" src="index.js"></script>
+</body>
+</html>
